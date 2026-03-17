@@ -1,74 +1,36 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<head>
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <title>CESIZen</title>
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    </head>
+    <body class="font-sans antialiased">
+        <div class="min-h-screen bg-gray-100">
+            @include('layouts.navigation')
 
-    <script src="https://cdn.tailwindcss.com"></script>
+            <!-- Page Heading -->
+            @isset($header)
+                <header class="bg-white shadow">
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        {{ $header }}
+                    </div>
+                </header>
+            @endisset
 
-</head>
-
-<body class="bg-gray-900 text-white min-h-screen flex flex-col">
-
-<!-- NAVBAR -->
-
-<nav class="bg-emerald-700 px-6 py-3 flex justify-between items-center">
-
-    <div class="font-bold text-lg">
-        CESIZen
-    </div>
-
-    <div class="flex gap-4 text-sm">
-
-        <a href="/" class="hover:underline">Accueil</a>
-
-        <a href="/exercises" class="hover:underline">Exercices</a>
-
-        <a href="/emotions" class="hover:underline">Tracker</a>
-
-        <a href="/profile" class="hover:underline">Profil</a>
-
-        @auth
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button class="hover:underline">Déconnexion</button>
-            </form>
-        @endauth
-
-        @guest
-            <a href="/login" class="hover:underline">Connexion</a>
-            <a href="/register" class="hover:underline">Inscription</a>
-        @endguest
-
-    </div>
-
-</nav>
-
-<!-- MAIN CONTENT -->
-
-<main class="flex-grow">
-
-    <div class="max-w-6xl mx-auto p-6">
-
-        @yield('content')
-
-    </div>
-
-</main>
-
-<!-- FOOTER -->
-
-<footer class="bg-gray-800 text-center text-sm py-4">
-
-    <p>Mentions légales</p>
-    <p>Contact</p>
-    <p>Liens utiles</p>
-    <p>CGU</p>
-
-</footer>
-
-</body>
+            <!-- Page Content -->
+            <main>
+                @yield('content')
+            </main>
+        </div>
+    </body>
+</html>

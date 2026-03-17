@@ -2,9 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\BreathingExercise;
 
 class PageController extends Controller
 {
-    //
+
+    public function home()
+    {
+        $exercises = BreathingExercise::all();
+
+        return view('pages.home', compact('exercises'));
+    }
+
 }
