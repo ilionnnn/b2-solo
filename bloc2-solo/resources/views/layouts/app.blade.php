@@ -1,36 +1,63 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="fr">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    <title>CESIZen</title>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+    <script src="https://cdn.tailwindcss.com"></script>
 
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
+</head>
 
-            <!-- Page Content -->
-            <main>
-                @yield('content')
-            </main>
-        </div>
-    </body>
+<body class="bg-[#0f172a] text-white min-h-screen flex flex-col">
+
+<!-- NAVBAR -->
+<nav class="bg-emerald-600 px-8 py-4 flex justify-between items-center shadow-lg">
+
+    <h1 class="text-xl font-semibold">
+        CESIZen
+    </h1>
+
+    <div class="flex gap-6 text-sm">
+
+        <a href="/">Accueil</a>
+        <a href="/exercises">Exercices</a>
+        <a href="/emotions">Tracker</a>
+
+        @auth
+            <a href="/profile">Profil</a>
+
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button>Logout</button>
+            </form>
+        @endauth
+
+        @guest
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        @endguest
+
+    </div>
+
+</nav>
+
+<!-- CONTENT -->
+<main class="flex-grow p-8 max-w-6xl mx-auto w-full">
+
+    @yield('content')
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-gray-800 text-center py-4 text-sm">
+
+    CESIZen © 2026
+
+</footer>
+
+</body>
+
 </html>

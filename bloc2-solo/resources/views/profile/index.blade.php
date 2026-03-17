@@ -2,19 +2,12 @@
 
 @section('content')
 
-    <h1 class="text-3xl mb-6">
-        Mon profil
-    </h1>
+    <h1 class="text-3xl mb-6">Profil</h1>
 
-    <div class="bg-gray-800 p-6 rounded w-96">
+    <div class="bg-gray-800 p-6 rounded-xl w-96">
 
-        <p>
-            Nom : {{ auth()->user()->name }}
-        </p>
-
-        <p>
-            Email : {{ auth()->user()->email }}
-        </p>
+        <p><strong>Nom :</strong> {{ $user->name }}</p>
+        <p><strong>Email :</strong> {{ $user->email }}</p>
 
     </div>
 

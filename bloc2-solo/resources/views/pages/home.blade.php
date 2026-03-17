@@ -2,48 +2,28 @@
 
 @section('content')
 
-    <h1 class="text-3xl mb-6 text-center">
-
-        CESIZen, Bienvenue dans votre espace bien être
-
+    <h1 class="text-3xl text-center mb-10 font-light">
+        Votre espace bien-être
     </h1>
 
-    <div class="mb-8">
-
-        <input
-            type="text"
-            placeholder="Recherche des ressources"
-            class="w-full p-2 rounded text-black">
-
-    </div>
-
-    <h2 class="text-xl mb-4">
-        Vos exercices
-    </h2>
-
-    <div class="grid grid-cols-3 gap-4">
+    <div class="grid grid-cols-3 gap-6">
 
         @foreach($exercises as $exercise)
 
-            <div class="bg-white text-black p-4 rounded">
+            <div class="bg-white text-black p-6 rounded-xl shadow-lg hover:scale-105 transition">
 
-                <h3 class="font-bold">
-
+                <h2 class="text-lg font-bold mb-2">
                     {{ $exercise->name }}
+                </h2>
 
-                </h3>
-
-                <p class="text-sm mb-2">
-
-                    Progression
-
+                <p class="text-sm text-gray-600 mb-4">
+                    Durée : {{ $exercise->duration ?? 'N/A' }} min
                 </p>
 
-                <a
-                    href="/exercises/{{ $exercise->id }}"
-                    class="bg-emerald-600 text-white px-3 py-1 rounded text-sm">
+                <a href="/exercises/{{ $exercise->id }}"
+                   class="bg-emerald-600 text-white px-4 py-2 rounded">
 
-                    Voir l'exercice
+                    Commencer
 
                 </a>
 
