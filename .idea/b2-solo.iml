@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/bloc2-solo/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/bloc2-solo/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
+      <sourceFolder url="file://$MODULE_DIR$/bloc2-solo/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/bloc2-solo/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/bloc2-solo/tests/Feature" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/bloc2-solo/tests/Unit" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/brick/math" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/carbonphp/carbon-doctrine-types" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/dflydev/dot-access-data" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/doctrine/inflector" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/dragonmantank/cron-expression" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/egulias/email-validator" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/fakerphp/faker" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/filp/whoops" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/fruitcake/php-cors" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/graham-campbell/result-type" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/guzzlehttp/guzzle" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/guzzlehttp/promises" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/guzzlehttp/uri-template" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/hamcrest/hamcrest-php" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/laravel/boost" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/laravel/framework" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/laravel/mcp" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/laravel/pail" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/laravel/pint" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/laravel/prompts" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/laravel/roster" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/laravel/sail" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/laravel/serializable-closure" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/laravel/tinker" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/league/commonmark" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/league/config" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/league/flysystem" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/league/flysystem-local" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/league/mime-type-detection" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/league/uri" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/league/uri-interfaces" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/mockery/mockery" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/nesbot/carbon" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/nette/schema" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/nette/utils" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/nikic/php-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/nunomaduro/collision" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/nunomaduro/termwind" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/phar-io/manifest" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/phar-io/version" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/phpoption/phpoption" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/phpunit/php-code-coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/phpunit/php-file-iterator" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/phpunit/php-invoker" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/phpunit/php-text-template" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/phpunit/php-timer" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/phpunit/phpunit" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/psr/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/psr/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/psr/http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/psr/http-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/psr/simple-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/psy/psysh" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/ralouphie/getallheaders" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/ramsey/collection" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/ramsey/uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/sebastian/cli-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/sebastian/code-unit" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/sebastian/code-unit-reverse-lookup" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/sebastian/comparator" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/sebastian/complexity" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/sebastian/diff" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/sebastian/environment" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/sebastian/exporter" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/sebastian/global-state" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/sebastian/lines-of-code" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/sebastian/object-enumerator" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/sebastian/object-reflector" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/sebastian/recursion-context" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/sebastian/type" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/sebastian/version" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/staabm/side-effects-detector" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/console" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/css-selector" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/deprecation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/error-handler" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/event-dispatcher-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/finder" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/http-foundation" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/http-kernel" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/mailer" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/mime" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/polyfill-intl-grapheme" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/polyfill-intl-idn" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/polyfill-intl-normalizer" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/polyfill-php80" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/polyfill-php83" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/polyfill-php84" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/polyfill-php85" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/polyfill-uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/process" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/routing" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/service-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/string" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/translation" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/translation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/uid" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/var-dumper" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/theseer/tokenizer" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/tijsverkoyen/css-to-inline-styles" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/vlucas/phpdotenv" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/voku/portable-ascii" />
+      <excludeFolder url="file://$MODULE_DIR$/bloc2-solo/vendor/laravel/breeze" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
