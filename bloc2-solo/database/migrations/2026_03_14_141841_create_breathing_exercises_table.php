@@ -8,29 +8,29 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('breathing_exercises', function (Blueprint $table) {
-
+        Schema::create('exercice_respiration', function (Blueprint $table) {
             $table->id();
+            $table->string('nom');
+            $table->text('description')->nullable();
+            $table->unsignedInteger('duree_inspiration');
+            $table->unsignedInteger('duree_apnee')->default(0);
+            $table->unsignedInteger('duree_expiration');
+            $table->unsignedInteger('duree_totale');
+            $table->unsignedInteger('nombre_cycles')->default(5);
+            $table->string('type');
+            $table->boolean('public')->default(true);
+            $table->timestamp('date_creation')->useCurrent();
+            $table->unsignedBigInteger('user_id');
 
-            $table->string('name');
-
-            $table->integer('inhale_duration');
-
-            $table->integer('hold_duration')->nullable();
-
-            $table->integer('exhale_duration');
-
-            $table->integer('cycles');
-
-            $table->foreignId('created_by')->nullable()->constrained('users')->nullOnDelete();
-
-            $table->timestamps();
-
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('breathing_exercises');
+        Schema::dropIfExists('exercice_respiration');
     }
 };

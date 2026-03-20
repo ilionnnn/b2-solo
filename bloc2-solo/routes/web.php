@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\EmotionController;
-use App\Http\Controllers\BreathingExerciseController;
+use App\Http\Controllers\InformationController;
+use App\Http\Controllers\ExerciceRespirationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FavoriteController;
 
@@ -12,11 +12,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserManagementController;
 
 
-/*
-|--------------------------------------------------------------------------
-| PAGE ACCUEIL
-|--------------------------------------------------------------------------
-*/
+//Page d'accueil
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 
@@ -28,61 +24,50 @@ Route::get('/dashboard', function () {
 Route::get('/profile/edit', [ProfileController::class, 'index'])
     ->middleware('auth')
     ->name('profile.edit');
-/*
-|--------------------------------------------------------------------------
-| ROUTES CONNECTÉES
-|--------------------------------------------------------------------------
-*/
+
 
 Route::middleware(['auth'])->group(function () {
 
-    /*
-    -----------------
-    PROFIL
-    -----------------
-    */
+
+    //Profil
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
 
-
-    /*
-    -----------------
-    EXERCICES
-    -----------------
-    */
-
-    Route::get('/exercises', [BreathingExerciseController::class, 'index'])->name('exercises.index');
-
-    Route::get('/exercises/{id}', [BreathingExerciseController::class, 'show'])->name('exercises.show');
+    //Exercices
 
 
+    Route::get('/exercice-respiration', [ExerciceRespirationController::class, 'index'])->name('exercice_respiration.index');
 
-    /*
-    -----------------
-    TRACKER EMOTIONS
-    -----------------
-    */
+    Route::get('/exercice-respiration/create', [ExerciceRespirationController::class, 'create'])->name('exercice_respiration.create')->middleware('auth');
 
-    Route::get('/emotions', [EmotionController::class, 'index'])->name('emotions.index');
+    Route::post('/exercice-respiration', [ExerciceRespirationController::class, 'store'])->name('exercice_respiration.store')->middleware('auth');
 
-    Route::get('/emotions/create', [EmotionController::class, 'create'])->name('emotions.create');
+    Route::get('/exercice-respiration/{id}', [ExerciceRespirationController::class, 'show'])->name('exercice_respiration.show');
 
-    Route::post('/emotions', [EmotionController::class, 'store'])->name('emotions.store');
+    Route::get('/exercice-respiration/{id}/edit', [ExerciceRespirationController::class, 'edit'])->name('exercice_respiration.edit')->middleware('auth');
 
-    Route::get('/emotions/{id}/edit', [EmotionController::class, 'edit'])->name('emotions.edit');
+    Route::put('/exercice-respiration/{id}', [ExerciceRespirationController::class, 'update'])->name('exercice_respiration.update')->middleware('auth');
 
-    Route::put('/emotions/{id}', [EmotionController::class, 'update'])->name('emotions.update');
+    Route::delete('/exercice-respiration/{id}', [ExerciceRespirationController::class, 'destroy'])->name('exercice_respiration.destroy')->middleware('auth');
 
-    Route::delete('/emotions/{id}', [EmotionController::class, 'destroy'])->name('emotions.destroy');
+    //Informations
 
+    Route::get('/information', [InformationController::class, 'index'])->name('information.index');
 
+    Route::get('/information/create', [InformationController::class, 'create'])->name('information.create')->middleware('auth');
 
-    /*
-    -----------------
-    FAVORIS
-    -----------------
-    */
+    Route::post('/information', [InformationController::class, 'store'])->name('information.store')->middleware('auth');
+
+    Route::get('/information/{id}', [InformationController::class, 'show'])->name('information.show');
+
+    Route::get('/information/{id}/edit', [InformationController::class, 'edit'])->name('information.edit')->middleware('auth');
+
+    Route::put('/information/{id}', [InformationController::class, 'update'])->name('information.update')->middleware('auth');
+
+    Route::delete('/information/{id}', [InformationController::class, 'destroy'])->name('information.destroy')->middleware('auth');
+
+    //Favoris
 
     Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
 
@@ -94,11 +79,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-/*
-|--------------------------------------------------------------------------
-| ADMIN
-|--------------------------------------------------------------------------
-*/
+//Admin
 
 Route::prefix('admin')->middleware(['auth'])->group(function () {
 
@@ -109,10 +90,6 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
 });
 
 
-/*
-|--------------------------------------------------------------------------
-| AUTH ROUTES (BREEZE)
-|--------------------------------------------------------------------------
-*/
+//Breeze
 
 require __DIR__.'/auth.php';

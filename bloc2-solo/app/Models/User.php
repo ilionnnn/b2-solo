@@ -15,7 +15,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'consent_rgpd'
+        'consent_rgpd',
     ];
 
     protected $hidden = [
@@ -25,38 +25,7 @@ class User extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'consent_rgpd' => 'boolean',
+        'consent_rgpd'      => 'boolean',
     ];
-
-    /*
-    |--------------------------------------------------------------------------
-    | Relations
-    |--------------------------------------------------------------------------
-    */
-
-    public function pages()
-    {
-        return $this->hasMany(Page::class, 'created_by');
-    }
-
-    public function emotionLogs()
-    {
-        return $this->hasMany(EmotionLog::class);
-    }
-
-    public function breathingSessions()
-    {
-        return $this->hasMany(BreathingSession::class);
-    }
-
-    public function exercises()
-    {
-        return $this->hasMany(BreathingExercise::class, 'created_by');
-    }
-
-    public function favorites()
-    {
-        return $this->hasMany(Favorite::class);
-    }
 
 }
