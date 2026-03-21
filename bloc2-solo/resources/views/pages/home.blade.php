@@ -6,10 +6,10 @@
 
     {{-- HERO --}}
     <div class="text-center py-16 px-4">
-        <h1 class="font-lora text-5xl font-semibold text-gray-900 mb-4">
+        <h1 class="font-lora text-5xl font-semibold text-white mb-3">
             CESIZen
         </h1>
-        <h2 class="font-lora text-5xl font-semibold text-gray-900 mb-4">
+        <h2 class="font-lora text-2xl font-normal text-emerald-400 mb-5">
             Votre espace bien-être
         </h2>
         <p class="text-slate-400 text-lg max-w-xl mx-auto leading-relaxed">
@@ -17,12 +17,12 @@
         </p>
         <div class="flex gap-4 justify-center mt-8">
             <a href="{{ route('exercice_respiration.index') }}"
-               class="bg-emerald-600 hover:bg-emerald-500 text-gray-900 font-semibold px-6 py-3 rounded-xl transition flex items-center gap-2">
+               class="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-xl transition flex items-center gap-2">
                 <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
                 Commencer un exercice
             </a>
             <a href="{{ route('information.index') }}"
-               class="text-gray-900 hover:text-white border border-slate-600 hover:border-slate-400 font-semibold px-6 py-3 rounded-xl transition">
+               class="text-slate-300 hover:text-white border border-slate-600 hover:border-slate-400 font-semibold px-6 py-3 rounded-xl transition">
                 Nos informations
             </a>
         </div>
@@ -31,7 +31,7 @@
     {{-- DERNIERS EXERCICES --}}
     <div class="mb-16">
         <div class="flex items-center justify-between mb-6">
-            <h2 class="font-lora text-2xl font-semibold text-gray-900">Exercices disponibles</h2>
+            <h2 class="font-lora text-2xl font-semibold text-white">Exercices disponibles</h2>
             <a href="{{ route('exercice_respiration.index') }}"
                class="text-sm text-emerald-400 hover:text-emerald-300 transition flex items-center gap-1">
                 Voir tous
@@ -43,7 +43,7 @@
             <div class="text-center py-10 text-slate-500 italic">Aucun exercice disponible pour le moment.</div>
         @else
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                @foreach($exercises->take(3) as $exercise)
+                @foreach($exercises as $exercise)
                     <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col gap-4 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
 
                         <div class="flex items-center justify-between">
@@ -81,7 +81,7 @@
                         </div>
 
                         <a href="{{ route('exercice_respiration.show', $exercise->id) }}"
-                           class="flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-gray-900 font-semibold text-sm rounded-lg px-4 py-2.5 transition">
+                           class="flex items-center justify-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold text-sm rounded-lg px-4 py-2.5 transition">
                             Commencer
                             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
@@ -95,7 +95,7 @@
     {{-- INFORMATIONS --}}
     <div>
         <div class="flex items-center justify-between mb-6">
-            <h2 class="font-lora text-2xl font-semibold text-gray-900">Informations</h2>
+            <h2 class="font-lora text-2xl font-semibold text-white">Informations</h2>
             <a href="{{ route('information.index') }}"
                class="text-sm text-emerald-400 hover:text-emerald-300 transition flex items-center gap-1">
                 Voir toutes
@@ -107,7 +107,7 @@
             <div class="text-center py-10 text-slate-500 italic">Aucune information disponible.</div>
         @else
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                @foreach($informations->take(3) as $info)
+                @foreach($informations as $info)
                     <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 flex flex-col gap-3 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
 
                         <h3 class="font-lora text-lg font-semibold text-slate-100 leading-snug">
@@ -122,7 +122,7 @@
                         <span class="text-xs text-slate-500">
                             {{ \Carbon\Carbon::parse($info->date_modification)->format('d/m/Y') }}
                         </span>
-                            <a href="{{ route('information.show', $info->id_page) }}"
+                            <a href="{{ route('information.show', $info->id) }}"
                                class="text-sm text-emerald-400 hover:text-emerald-300 transition flex items-center gap-1">
                                 Lire
                                 <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -136,3 +136,4 @@
     </div>
 
 @endsection
+

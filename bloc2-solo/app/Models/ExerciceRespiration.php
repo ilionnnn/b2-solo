@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class ExerciceRespiration extends Model
 {
-    protected $table = 'exercice_respiration';
-    public $timestamps = false;
+    protected $table      = 'exercice_respiration';
+    protected $primaryKey = 'id';
+    public $timestamps    = false;
 
     protected $fillable = [
         'nom',
@@ -31,10 +32,5 @@ class ExerciceRespiration extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function getDureeTotaleCalculee(): int
-    {
-        return ($this->duree_inspiration + $this->duree_apnee + $this->duree_expiration) * $this->nombre_cycles;
     }
 }

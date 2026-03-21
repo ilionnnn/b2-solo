@@ -28,4 +28,18 @@ class User extends Authenticatable
         'consent_rgpd'      => 'boolean',
     ];
 
+    public function ressources()
+    {
+        return $this->hasMany(Ressources::class, 'user_id');
+    }
+
+    public function exercices()
+    {
+        return $this->hasMany(ExerciceRespiration::class, 'user_id');
+    }
+
+    public function informations()
+    {
+        return $this->hasMany(Information::class, 'user_id');
+    }
 }

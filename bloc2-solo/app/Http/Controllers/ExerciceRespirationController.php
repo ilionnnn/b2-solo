@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ExerciceRespirationController extends Controller
 {
+
     public function index()
     {
         $exercices = Auth::check() && Auth::user()->role === 1
@@ -19,9 +20,13 @@ class ExerciceRespirationController extends Controller
 
     public function show($id)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Connectez-vous pour accéder aux exercices.');
+        }
+
         $exercice = ExerciceRespiration::with('user')->findOrFail($id);
 
-        if (!$exercice->public && (!Auth::check() || Auth::user()->role !== 1)) {
+        if (!$exercice->public && Auth::user()->role !== 1) {
             abort(403);
         }
 
@@ -30,92 +35,34 @@ class ExerciceRespirationController extends Controller
 
     public function create()
     {
+        if (!Auth::check()) return redirect()->route('login');
         return view('exercice-respiration.create');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'nom'               => 'required|max:255',
-            'description'       => 'nullable',
-            'duree_inspiration' => 'required|integer|min:1',
-            'duree_apnee'       => 'required|integer|min:0',
-            'duree_expiration'  => 'required|integer|min:1',
-            'nombre_cycles'     => 'required|integer|min:1',
-            'public'            => 'boolean',
-        ]);
-
-        $inspiration = $request->duree_inspiration;
-        $apnee       = $request->duree_apnee;
-        $expiration  = $request->duree_expiration;
-        $cycles      = $request->nombre_cycles;
-        $type        = $apnee > 0 ? "{$inspiration}-{$apnee}-{$expiration}" : "{$inspiration}-{$expiration}";
-        $totale      = ($inspiration + $apnee + $expiration) * $cycles;
-
-        ExerciceRespiration::create([
-            'nom'               => $request->nom,
-            'description'       => $request->description,
-            'duree_inspiration' => $inspiration,
-            'duree_apnee'       => $apnee,
-            'duree_expiration'  => $expiration,
-            'duree_totale'      => $totale,
-            'nombre_cycles'     => $cycles,
-            'type'              => $type,
-            'public'            => $request->has('public'),
-            'user_id'           => Auth::id(),
-            'date_creation'     => now(),
-        ]);
-
-        return redirect()->route('exercice_respiration.index')
-            ->with('success', 'Exercice créé avec succès.');
     }
 
     public function edit($id)
     {
+        if (!Auth::check()) return redirect()->route('login');
+
         $exercice = ExerciceRespiration::findOrFail($id);
+
+        if (Auth::user()->role !== 1 && $exercice->user_id !== Auth::id()) {
+            abort(403, 'Vous ne pouvez modifier que vos propres exercices.');
+        }
+
         return view('exercice-respiration.edit', compact('exercice'));
-    }
-
-    public function update(Request $request, $id)
-    {
-        $exercice = ExerciceRespiration::findOrFail($id);
-
-        $request->validate([
-            'nom'               => 'required|max:255',
-            'description'       => 'nullable',
-            'duree_inspiration' => 'required|integer|min:1',
-            'duree_apnee'       => 'required|integer|min:0',
-            'duree_expiration'  => 'required|integer|min:1',
-            'nombre_cycles'     => 'required|integer|min:1',
-            'public'            => 'boolean',
-        ]);
-
-        $inspiration = $request->duree_inspiration;
-        $apnee       = $request->duree_apnee;
-        $expiration  = $request->duree_expiration;
-        $cycles      = $request->nombre_cycles;
-        $type        = $apnee > 0 ? "{$inspiration}-{$apnee}-{$expiration}" : "{$inspiration}-{$expiration}";
-        $totale      = ($inspiration + $apnee + $expiration) * $cycles;
-
-        $exercice->update([
-            'nom'               => $request->nom,
-            'description'       => $request->description,
-            'duree_inspiration' => $inspiration,
-            'duree_apnee'       => $apnee,
-            'duree_expiration'  => $expiration,
-            'duree_totale'      => $totale,
-            'nombre_cycles'     => $cycles,
-            'type'              => $type,
-            'public'            => $request->has('public'),
-        ]);
-
-        return redirect()->route('exercice_respiration.index')
-            ->with('success', 'Exercice modifié avec succès.');
     }
 
     public function destroy($id)
     {
-        ExerciceRespiration::findOrFail($id)->delete();
+        if (!Auth::check()) return redirect()->route('login');
+
+        $exercice = ExerciceRespiration::findOrFail($id);
+
+        if (Auth::user()->role !== 1 && $exercice->user_id !== Auth::id()) {
+            abort(403, 'Vous ne pouvez supprimer que vos propres exercices.');
+        }
+
+        $exercice->delete();
         return redirect()->route('exercice_respiration.index')
             ->with('success', 'Exercice supprimé.');
     }

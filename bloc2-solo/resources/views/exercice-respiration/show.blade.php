@@ -5,18 +5,18 @@
 @section('content')
 
     <div class="flex items-center justify-between mb-8">
-        <h1 class="font-lora text-3xl font-semibold text-gray-900">{{ $exercice->nom }}</h1>
+        <h1 class="font-lora text-3xl font-semibold text-white">{{ $exercice->nom }}</h1>
         <div class="flex gap-2">
             @auth
-                @if(auth()->user()->role === 1)
+                @if(auth()->user()->role === 1 || auth()->user()->id === $exercice->user_id)
                     <a href="{{ route('exercice_respiration.edit', $exercice->id) }}"
-                       class="text-sm text-gray-900 hover:text-green-800 border border-slate-600 hover:border-slate-400 rounded-lg px-4 py-2 transition">
+                       class="text-sm text-slate-300 hover:text-white border border-slate-600 hover:border-slate-400 rounded-lg px-4 py-2 transition">
                         Modifier
                     </a>
                 @endif
             @endauth
             <a href="{{ route('exercice_respiration.index') }}"
-               class="text-sm text-gray-900 hover:text-green-800 border border-slate-600 hover:border-slate-400 rounded-lg px-4 py-2 transition">
+               class="text-sm text-slate-300 hover:text-white border border-slate-600 hover:border-slate-400 rounded-lg px-4 py-2 transition">
                 Retour
             </a>
         </div>
@@ -24,10 +24,8 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
-        {{-- COLONNE GAUCHE : infos --}}
         <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 flex flex-col gap-5">
 
-            {{-- META --}}
             <div class="flex flex-wrap items-center gap-3 pb-4 border-b border-slate-700">
             <span class="bg-emerald-900 text-emerald-300 border border-emerald-700 text-xs font-bold px-3 py-1 rounded-full tracking-wider">
                 {{ $exercice->type }}
@@ -40,12 +38,10 @@
             </span>
             </div>
 
-            {{-- DESCRIPTION --}}
             @if($exercice->description)
                 <p class="text-sm text-slate-400 leading-relaxed">{{ $exercice->description }}</p>
             @endif
 
-            {{-- RYTHME --}}
             <div class="bg-slate-900 rounded-xl px-4 py-4 flex items-center justify-center gap-4">
                 <div class="flex flex-col items-center min-w-[56px]">
                     <span class="text-2xl font-bold text-emerald-400 leading-none">{{ $exercice->duree_inspiration }}s</span>
@@ -65,7 +61,6 @@
                 </div>
             </div>
 
-            {{-- STATS --}}
             <div class="grid grid-cols-3 gap-3">
                 <div class="bg-slate-900 rounded-xl p-3 flex flex-col items-center gap-1">
                     <span class="text-[10px] uppercase tracking-wider text-slate-500">Cycles</span>
@@ -82,7 +77,7 @@
             </div>
 
             @auth
-                @if(auth()->user()->role === 0)
+                @if(auth()->user()->role === 1)
                     <div class="pt-4 border-t border-slate-700">
                         <form action="{{ route('exercice_respiration.destroy', $exercice->id) }}"
                               method="POST"
@@ -99,12 +94,10 @@
 
         </div>
 
-        {{-- COLONNE DROITE : lecteur --}}
         <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 flex flex-col items-center gap-6">
 
             <p class="font-lora text-lg font-semibold text-slate-200">Suivez le rythme</p>
 
-            {{-- CERCLE --}}
             <div class="relative w-40 h-40">
                 <svg class="absolute top-0 left-0 w-full h-full -rotate-90" viewBox="0 0 160 160">
                     <circle cx="80" cy="80" r="66" fill="none" stroke="#1e293b" stroke-width="6"/>
@@ -115,16 +108,14 @@
                 </svg>
                 <div id="breath-circle"
                      class="absolute inset-0 rounded-full flex flex-col items-center justify-center gap-1 transition-all duration-300"
-                     style="background: #1e293b">
+                     style="background:#1e293b">
                     <span id="phase-label" class="font-lora text-base font-semibold text-emerald-300">Prêt ?</span>
                     <span id="timer-label" class="text-sm text-slate-400"></span>
                 </div>
             </div>
 
-            {{-- CYCLE COUNT --}}
             <p id="cycle-count" class="text-sm text-slate-500 min-h-5"></p>
 
-            {{-- CONTROLS --}}
             <div class="flex gap-3">
                 <button onclick="resetBreathing()"
                         class="flex items-center gap-2 text-sm text-slate-400 hover:text-slate-200 border border-slate-600 hover:border-slate-400 rounded-lg px-4 py-2.5 transition">

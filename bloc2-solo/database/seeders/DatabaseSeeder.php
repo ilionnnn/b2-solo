@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,13 +13,26 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         User::firstOrCreate(
-            ['email' => 'test@example.com'],
-            ['name'  => 'Test User', 'password' => bcrypt('password'), 'role' => 1]
+            ['email' => 'admin@cesizenzen.fr'],
+            [
+                'name'     => 'Administrateur',
+                'password' => bcrypt('password'),
+                'role'     => 0,
+            ]
+        );
+
+        User::firstOrCreate(
+            ['email' => 'user@cesizenzen.fr'],
+            [
+                'name'     => 'test',
+                'password' => bcrypt('password'),
+                'role'     => 1,
+            ]
         );
 
         $this->call([
-            InformationSeeder::class,
             ExerciceRespirationSeeder::class,
+            InformationSeeder::class,
         ]);
     }
 }
