@@ -13,7 +13,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $user = Auth::user()->load(['ressources', 'exercices', 'informations']);
+        $user = Auth::user()->load(['exercices', 'informations']);
         return view('profile.index', compact('user'));
     }
 
@@ -34,7 +34,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route('profile.index')->with('status', 'profile-updated');
     }
 
     public function destroy(Request $request): RedirectResponse
