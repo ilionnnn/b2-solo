@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RessourcesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TypeRessourceController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\ExerciceRespirationController;
 use App\Http\Controllers\PageController;
@@ -72,8 +73,10 @@ Route::middleware('auth')->group(function () {
 // ADMIN
 ///////////////////////////////////////////////////////////
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::view('/gestion', 'admin.dashboard')->name('admin.dashboard');
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/',                         [AdminController::class, 'index'])->name('admin.index');
+    Route::delete('/users/{id}',            [AdminController::class, 'destroyUser'])->name('admin.users.destroy');
+    Route::delete('/exercices/{id}',        [AdminController::class, 'destroyExercice'])->name('admin.exercices.destroy');
 });
 
 ///////////////////////////////////////////////////////////

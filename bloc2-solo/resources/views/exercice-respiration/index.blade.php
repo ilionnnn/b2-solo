@@ -14,13 +14,11 @@
             @endif
         </h1>
         @auth
-            @if(auth()->user()->role === 1)
-                <a href="{{ route('exercice_respiration.create') }}"
-                   class="bg-emerald-700 hover:bg-emerald-600 text-white font-semibold text-sm px-4 py-2 rounded-lg transition flex items-center gap-2">
-                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
-                    Nouvel exercice
-                </a>
-            @endif
+            <a href="{{ route('exercice_respiration.create') }}"
+               class="bg-emerald-700 hover:bg-emerald-600 text-white font-semibold text-sm px-4 py-2 rounded-lg transition flex items-center gap-2">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                Nouvel exercice
+            </a>
         @endauth
     </div>
 
@@ -47,22 +45,21 @@
                         {{ $exercice->type }}
                     </span>
                         @auth
-                            @if(auth()->user()->role === 1 || auth()->user()->id === $exercice->user_id)
+                            @if(auth()->user()->role === 0 || auth()->user()->id === $exercice->user_id)
                                 <div class="flex gap-2">
                                     <a href="{{ route('exercice_respiration.edit', $exercice->id) }}"
                                        class="text-xs text-slate-400 hover:text-slate-200 border border-slate-600 hover:border-slate-400 rounded-md px-2.5 py-1 transition">
                                         Modifier
                                     </a>
-                                    @if(auth()->user()->role === 1 || auth()->user()->id === $exercice->user_id)
-                                        <form action="{{ route('exercice_respiration.destroy', $exercice->id) }}"
-                                              method="POST"
-                                              onsubmit="return confirm('Supprimer cet exercice ?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="text-xs text-red-400 hover:text-red-300 border border-red-800 hover:border-red-600 rounded-md px-2.5 py-1 transition">
-                                                Supprimers
-                                        </form>
-                                    @endif
+                                    <form action="{{ route('exercice_respiration.destroy', $exercice->id) }}"
+                                          method="POST"
+                                          onsubmit="return confirm('Supprimer cet exercice ?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="text-xs text-red-400 hover:text-red-300 border border-red-800 hover:border-red-600 rounded-md px-2.5 py-1 transition">
+                                            Supprimer
+                                        </button>
+                                    </form>
                                 </div>
                             @endif
                         @endauth
