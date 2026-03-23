@@ -94,7 +94,7 @@
                                 <td class="px-5 py-3.5 font-semibold text-slate-200">{{ $user->name }}</td>
                                 <td class="px-5 py-3.5 text-slate-400">{{ $user->email }}</td>
                                 <td class="px-5 py-3.5">
-                                    @if($user->role === 1)
+                                    @if($user->role === 0)
                                         <span class="bg-amber-900/50 border border-amber-700 text-amber-300 text-xs font-bold px-2.5 py-1 rounded-full">Admin</span>
                                     @else
                                         <span class="bg-slate-700 text-slate-400 text-xs font-bold px-2.5 py-1 rounded-full">Utilisateur</span>

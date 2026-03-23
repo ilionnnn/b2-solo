@@ -32,7 +32,7 @@
             <a href="{{ route('information.index') }}" class="text-slate-400 hover:text-white transition">Informations</a>
 
             @auth
-                @if(auth()->user()->role === 1)
+                @if(auth()->user()->role === 0)
                     <a href="{{ route('admin.index') }}" class="text-amber-400 hover:text-amber-300 transition flex items-center gap-1.5">
                         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>

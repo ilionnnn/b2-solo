@@ -76,7 +76,7 @@
                             Lire
                         </a>
                         @auth
-                            @if(auth()->user()->role === 1 || auth()->user()->id === $page->user_id)
+                            @if(auth()->user()->role === 0 || auth()->user()->id === $page->user_id)
                                 <div class="flex gap-2">
                                     <a href="{{ route('information.edit', $page->id) }}"
                                        class="text-xs text-slate-400 hover:text-slate-200 border border-slate-600 hover:border-slate-400 rounded-md px-3 py-1.5 transition">

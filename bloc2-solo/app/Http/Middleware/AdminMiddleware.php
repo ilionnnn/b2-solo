@@ -9,7 +9,7 @@ class AdminMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!auth()->check() || auth()->user()->role !== 1) {
+        if (!auth()->check() || auth()->user()->role !== 0) {
             abort(403);
         }
 

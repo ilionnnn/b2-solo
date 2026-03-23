@@ -7,14 +7,6 @@
     <div class="flex items-center justify-between mb-8">
         <h1 class="font-lora text-3xl font-semibold text-white">{{ $page->titre }}</h1>
         <div class="flex gap-2">
-            @auth
-                @if(auth()->user()->role === 1 || auth()->user()->id === $page->user_id)
-                    <a href="{{ route('information.edit', $page->id) }}"
-                       class="text-sm text-slate-300 hover:text-white border border-slate-600 hover:border-slate-400 rounded-lg px-4 py-2 transition">
-                        Modifier
-                    </a>
-                @endif
-            @endauth
             <a href="{{ route('information.index') }}"
                class="text-sm text-slate-300 hover:text-white border border-slate-600 hover:border-slate-400 rounded-lg px-4 py-2 transition">
                 Retour

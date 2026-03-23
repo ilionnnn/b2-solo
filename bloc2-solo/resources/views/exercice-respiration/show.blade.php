@@ -7,14 +7,6 @@
     <div class="flex items-center justify-between mb-8">
         <h1 class="font-lora text-3xl font-semibold text-white">{{ $exercice->nom }}</h1>
         <div class="flex gap-2">
-            @auth
-                @if(auth()->user()->role === 1 || auth()->user()->id === $exercice->user_id)
-                    <a href="{{ route('exercice_respiration.edit', $exercice->id) }}"
-                       class="text-sm text-slate-300 hover:text-white border border-slate-600 hover:border-slate-400 rounded-lg px-4 py-2 transition">
-                        Modifier
-                    </a>
-                @endif
-            @endauth
             <a href="{{ route('exercice_respiration.index') }}"
                class="text-sm text-slate-300 hover:text-white border border-slate-600 hover:border-slate-400 rounded-lg px-4 py-2 transition">
                 Retour
@@ -77,7 +69,7 @@
             </div>
 
             @auth
-                @if(auth()->user()->role === 1)
+                @if(auth()->user()->role === 0 || auth()->user()->id === $exercice->user_id)
                     <div class="pt-4 border-t border-slate-700">
                         <form action="{{ route('exercice_respiration.destroy', $exercice->id) }}"
                               method="POST"
