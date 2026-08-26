@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Information extends Model
 {
     protected $table = 'information';
+
     public $timestamps = false;
 
     protected $fillable = [
@@ -19,7 +20,7 @@ class Information extends Model
     ];
 
     protected $casts = [
-        'date_creation'     => 'datetime',
+        'date_creation' => 'datetime',
         'date_modification' => 'datetime',
     ];
 

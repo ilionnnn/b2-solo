@@ -14,7 +14,7 @@ class Page extends Model
         'slug',
         'content',
         'is_published',
-        'created_by'
+        'created_by',
     ];
 
     /*
@@ -32,5 +32,4 @@ class Page extends Model
     {
         return $this->morphMany(Favorite::class, 'favoritable');
     }
-
 }

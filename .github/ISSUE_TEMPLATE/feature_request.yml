@@ -1,0 +1,35 @@
+name: "✨ Évolution / Fonctionnalité"
+description: "Proposer une amélioration ou une nouvelle fonctionnalité"
+title: "[FEAT] "
+labels: ["évolution", "à trier"]
+body:
+  - type: textarea
+    id: besoin
+    attributes:
+      label: Besoin / problème à résoudre
+      description: Quel est le besoin utilisateur derrière cette demande ?
+    validations:
+      required: true
+  - type: textarea
+    id: proposition
+    attributes:
+      label: Solution proposée
+    validations:
+      required: true
+  - type: dropdown
+    id: priorite
+    attributes:
+      label: Priorité
+      options:
+        - Haute
+        - Moyenne
+        - Basse
+    validations:
+      required: true
+  - type: textarea
+    id: acceptation
+    attributes:
+      label: Critères d'acceptation
+      placeholder: |
+        - [ ] ...
+        - [ ] ...

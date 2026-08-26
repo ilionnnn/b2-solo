@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Information;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class InformationController extends Controller
@@ -19,7 +18,7 @@ class InformationController extends Controller
 
     public function show($id)
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             return redirect()->route('login')->with('error', 'Connectez-vous pour lire les informations.');
         }
 
@@ -34,13 +33,18 @@ class InformationController extends Controller
 
     public function create()
     {
-        if (!Auth::check()) return redirect()->route('login');
+        if (! Auth::check()) {
+            return redirect()->route('login');
+        }
+
         return view('information.create');
     }
 
     public function edit($id)
     {
-        if (!Auth::check()) return redirect()->route('login');
+        if (! Auth::check()) {
+            return redirect()->route('login');
+        }
 
         $page = Information::findOrFail($id);
 
@@ -53,7 +57,9 @@ class InformationController extends Controller
 
     public function destroy($id)
     {
-        if (!Auth::check()) return redirect()->route('login');
+        if (! Auth::check()) {
+            return redirect()->route('login');
+        }
 
         $page = Information::findOrFail($id);
 
@@ -62,6 +68,7 @@ class InformationController extends Controller
         }
 
         $page->delete();
+
         return redirect()->route('information.index')
             ->with('success', 'Page supprimée.');
     }

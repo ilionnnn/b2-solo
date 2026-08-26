@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
-use App\Models\User;
-use App\Models\EmotionLog;
 use App\Models\BreathingExercise;
+use App\Models\EmotionLog;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
-
     public function index()
     {
 
@@ -24,5 +22,4 @@ class DashboardController extends Controller
             'sessions'
         ));
     }
-
 }

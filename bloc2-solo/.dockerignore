@@ -1,0 +1,22 @@
+.git
+.github
+node_modules
+vendor
+public/build
+public/hot
+storage/*.key
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+# Caches de découverte régénérés au runtime (évite d'embarquer des providers dev)
+bootstrap/cache/*.php
+.env
+.env.*
+!.env.example
+tests
+docs
+*.md
+.idea
+.vscode
+docker-compose.yml

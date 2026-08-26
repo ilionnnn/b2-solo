@@ -14,6 +14,7 @@ class ProfileController extends Controller
     public function index()
     {
         $user = Auth::user()->load(['exercices', 'informations']);
+
         return view('profile.index', compact('user'));
     }
 

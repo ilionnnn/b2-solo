@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
 use App\Models\User;
 
 class UserManagementController extends Controller
 {
-
     public function index()
     {
 
@@ -17,5 +15,4 @@ class UserManagementController extends Controller
         return view('admin.users', compact('users'));
 
     }
-
 }

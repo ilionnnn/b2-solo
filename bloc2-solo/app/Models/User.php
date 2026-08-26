@@ -25,9 +25,8 @@ class User extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'consent_rgpd'      => 'boolean',
+        'consent_rgpd' => 'boolean',
     ];
-
 
     public function exercices()
     {

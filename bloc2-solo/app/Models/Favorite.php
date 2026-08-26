@@ -12,7 +12,7 @@ class Favorite extends Model
     protected $fillable = [
         'user_id',
         'favoritable_id',
-        'favoritable_type'
+        'favoritable_type',
     ];
 
     /*
@@ -30,5 +30,4 @@ class Favorite extends Model
     {
         return $this->morphTo();
     }
-
 }

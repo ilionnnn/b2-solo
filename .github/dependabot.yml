@@ -1,0 +1,39 @@
+# Veille technologique automatisée : Dependabot surveille les dépendances,
+# ouvre des pull requests de mise à jour et signale les vulnérabilités connues
+# (couplé aux Dependabot security alerts du dépôt).
+version: 2
+updates:
+  # Dépendances PHP (Composer)
+  - package-ecosystem: "composer"
+    directory: "/bloc2-solo"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "php"
+    commit-message:
+      prefix: "composer"
+
+  # Dépendances front-end (npm)
+  - package-ecosystem: "npm"
+    directory: "/bloc2-solo"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "javascript"
+    commit-message:
+      prefix: "npm"
+
+  # Actions GitHub utilisées par la CI/CD (workflows à la racine du dépôt)
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    labels:
+      - "dependencies"
+      - "ci"

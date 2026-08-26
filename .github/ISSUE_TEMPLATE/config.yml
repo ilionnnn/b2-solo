@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 🔐 Signalement de vulnérabilité de sécurité
+    url: https://github.com/CESIZen/cesizen/security/advisories/new
+    about: "Merci de ne pas ouvrir d'issue publique pour une faille de sécurité. Utilisez le canal privé (voir SECURITY.md)."
+  - name: 🆘 Support utilisateur
+    url: https://cesizen.example/support
+    about: Pour toute question d'utilisation non liée à un bug.

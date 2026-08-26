@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class ExerciceRespiration extends Model
 {
-    protected $table      = 'exercice_respiration';
+    protected $table = 'exercice_respiration';
+
     protected $primaryKey = 'id';
-    public $timestamps    = false;
+
+    public $timestamps = false;
 
     protected $fillable = [
         'nom',
@@ -25,7 +27,7 @@ class ExerciceRespiration extends Model
     ];
 
     protected $casts = [
-        'public'        => 'boolean',
+        'public' => 'boolean',
         'date_creation' => 'datetime',
     ];
 

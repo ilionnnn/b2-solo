@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,18 +15,18 @@ class DatabaseSeeder extends Seeder
         User::firstOrCreate(
             ['email' => 'admin@cesizenzen.fr'],
             [
-                'name'     => 'Administrateur',
+                'name' => 'Administrateur',
                 'password' => bcrypt('password'),
-                'role'     => 0,
+                'role' => 0,
             ]
         );
 
         User::firstOrCreate(
             ['email' => 'user@cesizenzen.fr'],
             [
-                'name'     => 'test',
+                'name' => 'test',
                 'password' => bcrypt('password'),
-                'role'     => 1,
+                'role' => 1,
             ]
         );
 
