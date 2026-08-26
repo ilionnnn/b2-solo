@@ -1,67 +1,31 @@
 name: Deploy
 
-# Déploiement continu vers l'environnement de préproduction.
-# Déclenché après un merge sur `preprod`, une fois la CI passée,
-# ou manuellement depuis l'onglet Actions (workflow_dispatch).
+# Déploiement continu vers la VM de préproduction.
+#
+# La VM (VirtualBox, derrière NAT/bridge sur le poste) n'est PAS joignable
+# depuis les runners GitHub hébergés. On utilise donc un *runner self-hosted*
+# installé sur la VM : il tire les jobs depuis GitHub (connexion sortante) et
+# exécute le déploiement en local. Le runner doit porter le label `preprod`.
 on:
   push:
     branches: [preprod]
   workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Environnement cible'
-        required: true
-        default: 'preprod'
-        type: choice
-        options:
-          - preprod
-          - production
 
 concurrency:
-  group: deploy-${{ github.ref }}
+  group: deploy-preprod
   cancel-in-progress: true
-
-# L'application Laravel se trouve dans le sous-dossier bloc2-solo/.
-defaults:
-  run:
-    working-directory: bloc2-solo
 
 jobs:
   deploy:
-    name: Déploiement ${{ github.event.inputs.environment || 'preprod' }}
-    runs-on: ubuntu-latest
-    environment: ${{ github.event.inputs.environment || 'preprod' }}
+    name: Déploiement préprod (VM self-hosted)
+    runs-on: [self-hosted, preprod]
+    defaults:
+      run:
+        working-directory: bloc2-solo
 
     steps:
       - name: Checkout du code
         uses: actions/checkout@v4
 
-      - name: Installation de PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.3'
-          extensions: mbstring, dom, fileinfo, bcmath
-          tools: composer:v2
-
-      - name: Build de l'artefact de release
-        run: |
-          composer install --no-dev --optimize-autoloader --no-interaction
-          npm ci && npm run build
-
-      - name: Déploiement via SSH (rsync + migrations)
-        # Les secrets (SSH_HOST, SSH_USER, SSH_KEY) sont configurés dans
-        # Settings > Environments du dépôt GitHub, jamais dans le code.
-        run: |
-          echo "Déploiement vers ${{ github.event.inputs.environment || 'preprod' }}"
-          echo "Étapes réelles à activer avec les secrets d'environnement :"
-          echo " 1. rsync des sources vers le serveur cible"
-          echo " 2. php artisan migrate --force"
-          echo " 3. php artisan config:cache route:cache view:cache"
-          echo " 4. redémarrage des workers de queue (php artisan queue:restart)"
-        # Exemple d'activation :
-        # uses: appleboy/ssh-action@v1.0.3
-        # with:
-        #   host: ${{ secrets.SSH_HOST }}
-        #   username: ${{ secrets.SSH_USER }}
-        #   key: ${{ secrets.SSH_KEY }}
-        #   script: cd /var/www/cesizen && git pull && ./deploy.sh
+      - name: Déploiement (build + stack Docker)
+        run: bash deploy.sh

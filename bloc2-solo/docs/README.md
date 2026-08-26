@@ -8,6 +8,7 @@ Ce dossier regroupe les livrables documentaires de l'activité 3 et les relie au
 | Livrable | Document | Éléments concrets dans le dépôt |
 |----------|----------|----------------------------------|
 | Plan de déploiement | [01-plan-de-deploiement.md](01-plan-de-deploiement.md) | `.github/workflows/`, `Dockerfile`, `docker-compose.yml`, `docker/` |
+| Préprod sur VM Debian | [05-preprod-vm.md](05-preprod-vm.md) | `deploy.sh`, `.github/workflows/deploy.yml` (runner self-hosted) |
 | Plan de maintenance | [02-plan-de-maintenance.md](02-plan-de-maintenance.md) | `.github/ISSUE_TEMPLATE/`, `PULL_REQUEST_TEMPLATE.md`, `pint.json` |
 | Plan de sécurisation | [03-plan-de-securisation.md](03-plan-de-securisation.md) | `SecurityHeaders`, `AdminMiddleware`, `RoleMiddleware`, `SECURITY.md` |
 | Veille technologique | [04-veille-technologique.md](04-veille-technologique.md) | `.github/dependabot.yml`, `composer audit` (CI) |
