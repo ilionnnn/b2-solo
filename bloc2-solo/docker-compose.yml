@@ -2,6 +2,10 @@
 # Trois services : application (PHP-FPM), serveur web (Nginx), base de données (MySQL).
 # Démarrage : docker compose up -d --build
 
+# Nom de projet fixe : garantit qu'un `docker compose` lancé depuis n'importe
+# quel dossier (ex. espace de travail du runner CI/CD) pilote la MÊME stack.
+name: cesizen
+
 services:
   app:
     build:

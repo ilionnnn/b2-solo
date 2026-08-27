@@ -116,6 +116,27 @@ et exécute `deploy.sh`. Désormais :
 > Le runner exécute Docker : son utilisateur doit être dans le groupe `docker`
 > (cf. Phase 2).
 
+## Démo quotidienne (environnement déjà installé)
+
+Pas d'installation ni de rebuild — juste le lancement :
+
+```bash
+# 1. Démarrer la VM cesizen-preprod dans VirtualBox
+# 2. Récupérer l'IP (le hotspot/DHCP peut la changer)
+ip a | grep 'inet ' | grep -v 127.0.0.1
+# 3. Se connecter et démarrer la stack
+ssh vboxuser@172.20.10.4
+cd ~/cesizen/bloc2-solo
+docker compose up -d          # rapide : image déjà construite
+# 4. Vérifier
+curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8080/up   # 200 = OK
+# 5. Démo dans le navigateur du PC : http://<ip-de-la-vm>:8080
+```
+
+> Avec `restart: unless-stopped` + `sudo systemctl enable docker` (une fois), les
+> conteneurs redémarrent automatiquement au boot de la VM : le site est déjà en
+> ligne sans commande. `./deploy.sh` n'est nécessaire qu'après un changement de code.
+
 ## Mise à jour d'une version
 
 - **Automatique** : merger/pusher sur `preprod`.
